@@ -1,0 +1,190 @@
+body{
+    left:0;
+}
+
+video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+
+}
+
+nav {
+    position: absolute;
+    right: 0; 
+    
+
+    font-family: 'Agbalumo', cursive;
+    font-size: x-large;
+    text-align: center;
+    filter: drop-shadow(0 0 6px white);
+    color: black;
+}
+
+svg {
+    position: absolute;
+    top: 0;
+    left: 0; 
+    transform: translateX(0%);
+    filter: drop-shadow(0 0 12px white);
+    transition: transform 2s ease ;
+}
+svg path {
+    transition : fill 0.5s ease, stroke 0.5s ease, stroke-width 0.5s ease;
+}
+svg path:hover {
+    fill: grey;
+    stroke: white;
+    stroke-width: 3px; 
+    
+}
+svg:hover {
+    transform: scale(2) translateY(100px) translateX(65px);
+}
+footer {
+    padding: 1px 10px 8px;
+    width: 100vw;
+    bottom: 0;
+    left: 0; 
+    color: white;
+    background-color: black;
+    width: 100%;
+    margin-left: -12px;
+    margin-bottom: -10px;
+
+}
+nav a {
+    text-decoration: none;
+    color: black;
+    filter: drop-shadow(0 0 5px white);
+    transition: color 0.5s ease, border-bottom 0.5s ease, filter 0.5s ease ;
+}
+section {
+    margin-top: 170px;
+    z-index: 0;
+    display: inline-block;
+}
+nav a:hover {
+    filter: drop-shadow(0 0 5px rgb(0, 0, 0));
+    color: white;
+    border-bottom: 2px solid white;
+
+  }
+
+article {
+    margin: 10px;
+    padding: 20px;
+    border: 2px solid black;
+    background-color: rgba(128, 128, 128, 0.7);
+    display: inline-block;
+    width: calc(33% - 20px); 
+    box-sizing: border-box; 
+}
+article img:hover {
+    transform: scale(1.1); 
+    transition: transform 0.5s ease-in-out; 
+}
+
+nav a.current {
+    filter: drop-shadow(0 0 2px rgb(0, 0, 0));
+    color: white;
+    border-bottom: 2px solid white;
+    
+    
+}
+
+
+
+nav ul {
+    display: flex;
+    justify-content: space-between;
+}
+
+nav li {
+    display: inline;
+}
+
+.dropdown {
+    position: relative; 
+}
+
+.dropdown .dropdown-menu {
+    position: absolute;
+    top: 30%; 
+    left: 0;
+    display: none; 
+
+}
+
+.dropdown .dropdown-menu a {
+    display: block; 
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block; 
+}
+
+@media screen and (max-width: 600px) {
+    body {
+        background-image: url('images/sg22.jpg');
+        background-size: cover;
+        }
+    nav {
+        font-size: medium; 
+    }
+
+    svg {
+        transform: scale(1) translateY(0) translateX(0); 
+    }
+
+    section {
+        margin-top: 100px; 
+    }
+
+    article {
+        width: calc(100%); 
+        margin: 1px;
+        background-color: rgba(128, 128, 128, 0.9);
+     
+    }
+    article img {
+        width: 100%; 
+        max-width: 220px; 
+        max-height: 170px;
+    }
+    nav {
+        position: absolute;
+        right: 0; 
+        margin-top: 50px;
+    }
+    video {
+        display: none; 
+    }
+    svg {
+        margin-top: 4px;
+        margin-left: 2px;
+        width: 170px; 
+        height: 260px;}
+        footer {
+            padding: 1px 10px 1px;
+            width: 100vw;
+            bottom: 0;
+            left: 0; 
+            color: white;
+            background-color: black;
+            width: 100%;
+            margin-left: -12px;
+            margin-bottom: -10px;
+        
+    }
+    
+
+
+
+
+}
+
