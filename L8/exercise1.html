@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    /* Basic styling for the elements */
+    .profile {
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .profile img {
+      width: 200px;
+      border-radius: 2%;
+      margin-bottom: 20px;
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+</head>
+<body>
+
+  <main>
+    <div class="profile">
+      <h1>About</h1>
+      <img class="logo-image" src="face.jpg" alt="my-avatar" />
+      <h3>Wei Heng</h3>
+      <p>Software Developer</p>
+      <p>Age: <span id="age">18</span></p>
+    </div>
+  </main>
+
+  <button class="play">Play Animation</button>
+  <button class="pause">Pause Animation</button>
+  <button class="restart">Restart Animation</button>
+
+  <script>
+    const profile = document.querySelector('.profile');
+
+
+    var animation = anime({
+      targets: profile.children,
+      translateY: -300,
+      rotate: 180,
+      delay: anime.stagger(300, { start: 1000 }),
+      direction: 'alternate',
+      loop: true,
+      autoplay: false
+    });
+
+    document.querySelector('.play').onclick = animation.play;
+    document.querySelector('.pause').onclick = animation.pause;
+    document.querySelector('.restart').onclick = animation.restart;
+
+
+    anime({
+      targets: '#age',
+      innerHTML: [0, 18], 
+      easing: 'linear',
+      round: 1, 
+      duration: 2000 
+    });
+  </script>
+</body>
+</html>
