@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FullPage.js</title>
+  <link rel="stylesheet" href="https://unpkg.com/fullpage.js/dist/fullpage.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    /* Styles for section titles */
+    .section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 35px;
+      color: white;
+    }
+    /* Styles for slides */
+    .slide {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 50px;
+      color: white;
+    }
+   /* Basic styling for the elements */
+   .profile {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .profile img {
+      width: 150px;
+      border-radius: 2%;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div id="fullpage">
+    <div class="section">
+        <main>
+            <div class="profile">
+              <h3>About</h3>
+              <img class="logo-image" src="face.jpg" alt="my-avatar" />
+              <h5>Wei Heng</h5>
+              <p>Software Developer</p>
+              <p>Age: <span id="age">18</span></p>
+            </div>
+          </main>
+        
+          <button class="play">Play Animation</button>
+          <button class="pause">Pause Animation</button>
+          <button class="restart">Restart Animation</button>
+    </div>
+    <div class="section">
+            <div class="contact-info">
+              <h1>Contact Me</h1>
+
+                <a href="https://facebook.com" target="_blank">
+                    <i class="fab fa-facebook"></i>
+                  </a>
+
+                  <a href="https://twitter.com" target="_blank">
+                    <i class="fab fa-twitter"></i>
+                  </a>
+
+                  <a href="https://instagram.com" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                  </a>
+                  <p>Email: weiheng@email.com</p>
+              <p>Phone: +65 81112222</p>
+              </div>
+              
+            </div>
+          </div>
+
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://unpkg.com/fullpage.js/dist/fullpage.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+  <script>
+ 
+    const profile = document.querySelector('.profile');
+
+
+    var animation = anime({
+      targets: profile.children,
+      translateY: -300,
+      rotate: 180,
+      delay: anime.stagger(300, { start: 1000 }),
+      direction: 'alternate',
+      loop: true,
+      autoplay: false
+    });
+
+    document.querySelector('.play').onclick = animation.play;
+    document.querySelector('.pause').onclick = animation.pause;
+    document.querySelector('.restart').onclick = animation.restart;
+
+
+    anime({
+      targets: '#age',
+      innerHTML: [0, 18], 
+      easing: 'linear',
+      round: 1, 
+      duration: 2000 
+    });
+ 
+    $(document).ready(function () {
+  $('#fullpage').fullpage({
+    sectionsColor: ['#03A9F4', '#2ECC71', '#00BCD4'],
+    navigation: true,
+    navigationPosition: 'right',
+    afterLoad: function (origin, destination, direction) {
+      if (destination.index === 1) {
+        animateSecondSection();
+      }
+    },
+  });
+
+  function animateSecondSection() {
+  var secondSectionElements = document.querySelectorAll('.section:nth-child(2) .contact-info > *');
+  anime.timeline({
+    targets: secondSectionElements,
+    translateY: [-50, 0],
+    opacity: [0, 1],
+    delay: anime.stagger(100),
+    easing: 'easeInOutQuad',
+    duration: 500,
+  }).add({
+    targets: '.contact-info p',
+    opacity: [0, 1],
+    translateY: [-20, 0],
+    easing: 'easeInOutQuad',
+    duration: 300,
+  }).add({
+    targets: '.contact-info a',
+    opacity: [0, 1],
+    translateY: [-20, 0],
+    easing: 'easeInOutQuad',
+    duration: 300,
+  }).play();
+}
+
+});
+
+  </script>
+</body>
+</html>
